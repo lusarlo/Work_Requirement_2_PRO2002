@@ -1,14 +1,13 @@
-# What is this "Converter" converting?!?
-class Converter:
-    def __init__(self, factor, offset):
-        self.factor = factor
-        self.offset = offset
+class TemperatureConverter:
+    # Constants used in the fahrenheit to celsius formula
+    FAHRENHEIT_OFFSET = 32
+    CONVERSION_FACTOR = 5 / 9
 
-    def convert(self, value):
-        return value * self.factor + self.offset
+    def fahrenheit_to_celsius(self, fahrenheit_value):
+        # Subtract the offset and apply the conversion factor
+        return (fahrenheit_value - self.FAHRENHEIT_OFFSET) * self.CONVERSION_FACTOR
 
+# Convert 212 degrees Fahrenheit to Celsius
+result = TemperatureConverter().fahrenheit_to_celsius(212)
 
-# Why such oddly specific numbers?!?
-# And why "5/9" twice?!?
-c = Converter(5/9, -32 * 5/9)
-print(c.convert(212))
+print(result) # Output: temperature in Celsius
